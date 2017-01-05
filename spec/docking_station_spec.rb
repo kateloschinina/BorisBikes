@@ -5,6 +5,7 @@ describe DockingStation do
   it { should respond_to :release_bike }
 
   it 'releases working bike' do
+    should respond_to(:release_bike).with(0).argument
     station = subject
     expect {station.release_bike}.to raise_error("There are no bikes at the station!")
     station.dock_bike(Bike.new)
@@ -14,11 +15,10 @@ describe DockingStation do
 
   it 'docks bike at a docking station' do
     should respond_to(:dock_bike).with(1).argument
-  end
-
-  it 'stores a bike into docking station'do
+    station = subject
     bike = Bike.new
-    expect(subject.dock_bike(bike).last).to eq(bike)
+    expect(station.dock_bike(bike).last).to eq(bike)
+    expect {station.dock_bike(bike)}.to raise_error("Station is full")
   end
 
   it 'member sees a station and ckeck if there is a bike' do
@@ -30,9 +30,9 @@ describe DockingStation do
 
   it 'checks if docking station is full' do
     station = subject
-    expect(station.station_full?).to be_truthy
+    expect(station.station_has_space?).to be_truthy
     station.dock_bike(Bike.new)
-    expect {station.station_full?}.to raise_error("Station is full")
+    expect {station.station_has_space?}.to raise_error("Station is full")
   end
 
 end

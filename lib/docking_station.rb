@@ -13,7 +13,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    @bikes << bike
+    @bikes << bike if self.station_has_space?
   end
 
   def bike_there?
@@ -21,7 +21,7 @@ class DockingStation
     raise "There are no bikes at the station!"
   end
 
-  def station_full?
+  def station_has_space?
     return true if @bikes.length < 1
     raise "Station is full"
   end
