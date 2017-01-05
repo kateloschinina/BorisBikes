@@ -22,7 +22,7 @@ class DockingStation
   end
 
   def station_has_space?
-    return true if @bikes.length < 1
+    return true if @bikes.length < 20
     raise "Station is full"
   end
 
