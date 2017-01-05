@@ -18,7 +18,12 @@ class DockingStation
 
   def bike_there?
     return true if @bikes != []
-    raise "There is no bikes at the station!"
+    raise "There are no bikes at the station!"
+  end
+
+  def station_full?
+    return true if @bikes.length < 1
+    raise "Station is full"
   end
 
 end

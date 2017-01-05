@@ -20,9 +20,16 @@ describe DockingStation do
 
   it 'member sees a station and ckeck if there is a bike' do
     station = subject
-    expect {station.bike_there?}.to raise_error("There is no bikes at the station!")
+    expect {station.bike_there?}.to raise_error("There are no bikes at the station!")
     station.dock_bike(Bike.new)
     expect(station.bike_there?).to be_truthy
+  end
+
+  it 'checks if docking station is full' do
+    station = subject
+    expect(station.station_full?).to be_truthy
+    station.dock_bike(Bike.new)
+    expect {station.station_full?}.to raise_error("Station is full")
   end
 
 end
