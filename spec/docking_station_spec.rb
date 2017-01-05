@@ -10,7 +10,7 @@ describe DockingStation do
   end
 
   it 'docks bike at a docking station' do
-    should respond_to :dock_bike
+    should respond_to(:dock_bike).with(1).argument 
   end
 
   it 'stores a bike into docking station'do
@@ -18,8 +18,11 @@ describe DockingStation do
     expect(subject.dock_bike(bike).last).to eq(bike)
   end
 
-  it 'member sees a bike and ckeck if it is working' do
-    
+  it 'member sees a station and ckeck if there is a bike' do
+    station = subject
+    expect(station.bike_there?).to be_falsey
+    station.dock_bike(Bike.new)
+    expect(station.bike_there?).to be_truthy
   end
 
 end

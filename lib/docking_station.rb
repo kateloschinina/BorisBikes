@@ -15,4 +15,10 @@ class DockingStation
   def dock_bike(bike)
     @bikes << bike
   end
+
+  def bike_there?
+    return true if @bikes != []
+    false
+  end
+
 end
