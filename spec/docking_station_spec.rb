@@ -21,6 +21,8 @@ describe DockingStation do
     expect {20.times {station.dock_bike(bike)}}.to raise_error("Station is full")
   end
 
+=begin
+
   it 'member sees a station and ckeck if there is a bike' do
     station = subject
     expect {station.bike_there?}.to raise_error("There are no bikes at the station!")
@@ -34,6 +36,7 @@ describe DockingStation do
     20.times {station.dock_bike(Bike.new)}
     expect {station.station_has_space?}.to raise_error("Station is full")
   end
+=end
 
 end
 

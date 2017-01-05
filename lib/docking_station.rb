@@ -8,13 +8,17 @@ class DockingStation
     @bikes = Array.new
   end
 
+#private
   def release_bike
-    @bikes.pop if self.bike_there?
+    @bikes.pop if bike_there?
   end
 
+#private
   def dock_bike(bike)
-    @bikes << bike if self.station_has_space?
+    @bikes << bike if station_has_space?
   end
+
+  private
 
   def bike_there?
     return true if @bikes != []
