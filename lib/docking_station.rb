@@ -2,6 +2,8 @@ require_relative 'bike.rb'
 
 class DockingStation
 
+  DEFAULT_CAPACITY = 20
+
   attr_reader :bikes
 
   def initialize
@@ -26,7 +28,7 @@ class DockingStation
   end
 
   def station_has_space?
-    return true if @bikes.length < 20
+    return true if @bikes.length < DEFAULT_CAPACITY
     raise "Station is full"
   end
 
