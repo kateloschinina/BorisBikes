@@ -5,7 +5,10 @@ describe DockingStation do
   it { should respond_to :release_bike }
 
   it 'releases working bike' do
-    bike = subject.release_bike
+    station = subject
+    expect {station.release_bike}.to raise_error("There are no bikes at the station!")
+    station.dock_bike(Bike.new)
+    bike = station.release_bike
     expect(bike).to be_working
   end
 

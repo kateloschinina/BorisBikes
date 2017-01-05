@@ -9,7 +9,7 @@ class DockingStation
   end
 
   def release_bike
-    return Bike.new
+    @bikes.pop if self.bike_there?
   end
 
   def dock_bike(bike)
