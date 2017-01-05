@@ -18,7 +18,7 @@ class DockingStation
 
   def bike_there?
     return true if @bikes != []
-    false
+    raise "There is no bikes at the station!"
   end
 
 end
