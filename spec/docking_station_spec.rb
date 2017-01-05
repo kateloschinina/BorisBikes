@@ -9,6 +9,19 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
+  it 'docks bike at a docking station' do
+    should respond_to :dock_bike
+  end
+
+  it 'stores a bike into docking station'do
+    bike = Bike.new
+    expect(subject.dock_bike(bike).last).to eq(bike)
+  end
+
+  it 'member sees a bike and ckeck if it is working' do
+    
+  end
+
 end
 
 =begin
